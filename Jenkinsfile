@@ -5,8 +5,8 @@ pipeline {
         stage('vault_connection') {
             steps {
                 echo 'connection started'
-                withVault(configuration: [timeout: 60, vaultCredentialId: '463bca46-0f13-408e-b1ab-7a555bc85a13', vaultUrl: 'http://ec2-54-219-53-11.us-west-1.compute.amazonaws.com:8200'], vaultSecrets: [[path: 'kv/pranab_aws_creds', secretValues: [[vaultKey: 'access_key'], [vaultKey: 'secret_key'], [vaultKey: 'aws_region']]]]) {
-                echo 'connection successfull'
+                withVault(configuration: [timeout: 60, vaultCredentialId: '463bca46-0f13-408e-b1ab-7a555bc85a13', vaultUrl: 'http://ec2-54-219-53-11.us-west-1.compute.amazonaws.com:8200'], vaultSecrets: [[path: 'kv/pranab_aws_creds', secretValues: [[envVar: 'ACCESS_KEY', vaultKey: 'access_key'], [envVar: 'SECRET_KEY', vaultKey: 'secret_key'], [envVar: 'AWS_REGION', vaultKey: 'aws_region']]]]) {
+                echo 'connection successful'
                 }
             }
             }
