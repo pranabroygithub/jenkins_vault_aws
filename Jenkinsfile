@@ -12,9 +12,9 @@ pipeline {
             }
         stage('Running python script'){
             steps {
-                echo '$ACCESS_KEY'
+                echo '${ACCESS_KEY}'
                 echo '$SECRET_KEY'
-                echo '$AWS_REGION'
+                echo $AWS_REGION
                 sh 'python3 script.py --access_key $ACCESS_KEY --secret_key $SECRET_KEY --aws_region $AWS_REGION'
             }
         }
