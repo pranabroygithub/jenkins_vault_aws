@@ -11,13 +11,6 @@ pipeline {
                 sh 'python3 script.py --access_key $ACCESS_KEY --secret_key $SECRET_KEY --aws_region $AWS_REGION'
                 }
             }
-            }
-        stage('Running python script'){
-            steps {
-                sh 'echo $ACCESS_KEY'
-                //sh 'python3 script.py --access_key $ACCESS_KEY --secret_key $SECRET_KEY --aws_region $AWS_REGION'
-            }
-        }
-  
+            }  
     }
 }
