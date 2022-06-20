@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('vault connection') {
+            steps {
+                echo 'connection started'
+                withVault(configuration: [timeout: 60, vaultCredentialId: '463bca46-0f13-408e-b1ab-', vaultUrl: 'http://ec2-54-216-0.us-west-1.compute.amazonaws.com:8200'], vaultSecrets: [[path: 'kv/pranab/creds', secretValues: [[envVar: 'USERNAME', vaultKey: 'username']]]]) {
+                echo 'connection successfull'
+}
+            }
+        
+        stage('python script run'){
+            steps{
+                echo 'running python script'
+                sh 'python3 script.py'
+            }
+        }
+
+        }
+    }
+}
