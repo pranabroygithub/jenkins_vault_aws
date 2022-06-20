@@ -12,7 +12,7 @@ pipeline {
             }
         stage('editing file'){
             steps {
-                sh 'python3 script.py --access_key $access_key --secret_key $secret_key --aws_region $aws_region'
+                sh 'python3 script.py --access_key $ACCESS_KEY --secret_key $SECRET_KEY --aws_region $AWS_REGION'
             }
         }
   
